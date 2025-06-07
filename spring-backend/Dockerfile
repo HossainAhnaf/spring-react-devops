@@ -1,12 +1,22 @@
-FROM openjdk:11 AS build
+FROM openjdk:11 AS base
 
 WORKDIR /app
 
 COPY . .
 
+
+FROM base AS dev
+
+EXPOSE 8080
+
+CMD ["./mvnw", "spring-boot:run"]
+
+FROM base AS build
+
 RUN ./mvnw package
 
-FROM bellsoft/liberica-runtime-container:jdk-17-musl
+
+FROM bellsoft/liberica-runtime-container:jdk-17-musl AS prod
 
 WORKDIR /app
 

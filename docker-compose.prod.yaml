@@ -11,7 +11,9 @@ services:
     networks:
       - frontend-backend
   backend:
-    build: ./spring-backend
+    build: 
+      context: ./spring-backend
+      target: prod
     ports:
       - "8080:8080"
     env_file: ./spring-backend/.env.prod
