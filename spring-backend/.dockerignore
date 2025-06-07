@@ -1,0 +1,75 @@
+# === ENVIRONMENT CONFIGURATION ===
+.env*
+!*.sample
+
+# === MAVEN ===
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# === IDEs ===
+## IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+## Eclipse
+.project
+.classpath
+.settings/
+.springBeans
+
+## VSCode
+.vscode/
+
+# === OS FILES ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === LOGS ===
+*.log
+logs/
+*.out
+
+# === TEST OUTPUT ===
+test-output/
+coverage/
+jacoco.exec
+surefire-reports/
+failsafe-reports/
+
+# === DOCKER ===
+*.pid
+*.pid.lock
+docker-compose.override.yml
+**/docker-data/
+**/tmp/
+**/var/
+
+# === DATABASE ===
+*.mv.db
+*.h2.db
+
+# === SPRING SPECIFIC ===
+# Ignore temporary files
+*.tmp
+
+# === BACKUP FILES ===
+*.bak
+*.old
+*.swp
+*.swo
+*.orig

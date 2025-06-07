@@ -1,0 +1,8 @@
+services:
+  frontend:
+    build:
+      context: ./react-frontend
+      target: prod
+    ports:
+      - "4200:4200"
+    
