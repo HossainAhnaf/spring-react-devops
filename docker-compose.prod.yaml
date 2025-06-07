@@ -5,4 +5,35 @@ services:
       target: prod
     ports:
       - "4200:4200"
-    
+    env_file: ./react-frontend/.env.prod
+    depends_on:
+      - backend
+    networks:
+      - frontend-backend
+  backend:
+    build: ./spring-backend
+    ports:
+      - "8080:8080"
+    env_file: ./spring-backend/.env.prod
+    depends_on:
+      - db
+    networks:
+      - backend-db
+      - frontend-backend 
+  db:
+    image: mysql:8
+    env_file:
+      - ./mysql-db/.env.prod
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - backend-db
+    expose:
+      - 3306 
+
+volumes:
+  db_data:     
+
+networks:
+  frontend-backend:
+  backend-db:

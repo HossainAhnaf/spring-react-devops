@@ -12,9 +12,7 @@ __test__/
 
 # Configuration and environment files that should not be in the image
 .env*
-.babelrc
 jest.config.js
-babel.config.js
 
 # Git and version control
 .git
