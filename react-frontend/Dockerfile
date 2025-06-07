@@ -18,8 +18,6 @@ CMD ["npm", "start"]
 
 FROM base AS build
 
-ENV NODE_ENV=production
-
 RUN npm run build
 
 
