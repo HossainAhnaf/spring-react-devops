@@ -22,9 +22,11 @@ jobs:
           node-version: '16.13.1'
       
       - name: Install dependencies
+        working-directory: ./react-frontend
         run: npm install
       
       - name: Run tests
+        working-directory: ./react-frontend
         run: npm run test
   
   lint:
@@ -40,14 +42,12 @@ jobs:
           node-version: '16.13.1'
       
       - name: Install dependencies
-        run: |
-          cd ./react-frontend
-          npm install
+        working-directory: ./react-frontend
+        run: npm install
       
       - name: Run linter
-        run: |
-          cd ./react-frontend 
-          npm run lint
+        working-directory: ./react-frontend
+        run: npm run lint
   
   build:
     name: Build & Upload Artifact
