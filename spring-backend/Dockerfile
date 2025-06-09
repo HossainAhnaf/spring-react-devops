@@ -16,7 +16,7 @@ FROM base AS build
 RUN ./mvnw package
 
 
-FROM bellsoft/liberica-runtime-container:jdk-17-musl AS prod
+FROM bellsoft/liberica-runtime-container:jdk-11-musl AS prod
 
 WORKDIR /app
 

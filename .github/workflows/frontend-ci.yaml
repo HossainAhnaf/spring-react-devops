@@ -15,7 +15,7 @@ on:
       - '**/*.md'
       - '**/*.env'
       - '*'
-
+      
 jobs:
   test:
     name: Run tests    
@@ -126,6 +126,7 @@ jobs:
       - name: Build docker image
         uses: docker/build-push-action@v4
         with:
+          target: prod
           context: ./react-frontend
           file: ./react-frontend/Dockerfile
           push: false
@@ -162,6 +163,7 @@ jobs:
         if: github.event_name == 'push'
         uses: docker/build-push-action@v4
         with:
+          target: prod
           context: ./react-frontend
           file: ./react-frontend/Dockerfile
           push: true
