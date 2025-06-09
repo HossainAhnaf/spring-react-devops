@@ -40,10 +40,14 @@ jobs:
           node-version: '16.13.1'
       
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd ./react-frontend
+          npm install
       
       - name: Run linter
-        run: npm run lint
+        run: |
+          cd ./react-frontend 
+          npm run lint
   
   build:
     name: Build & Upload Artifact
@@ -59,16 +63,20 @@ jobs:
           node-version: '16.13.1'
       
       - name: Install dependencies
-        run: npm install
-      
-      - name: Run build
-        run: npm run build
-      
+        run: |
+          cd ./react-frontend
+          npm install
+        
+      - name: Build
+        run: |
+          cd ./react-frontend
+          npm run build
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: Build Artifact
-          path: built
+          path: ./react-frontend/built
   
   docker:
     name: Build , Security Scan & push Docker image
@@ -109,7 +117,8 @@ jobs:
       - name: Build docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./react-frontend
+          file: ./react-frontend/Dockerfile
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           load: true
@@ -143,7 +152,8 @@ jobs:
       - name: Push docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./react-frontend
+          file: ./react-frontend/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
       
