@@ -1,20 +1,20 @@
 name: Frontend CI pipeline
 
 on:
-  push:
-    branches: 
-      - main
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.env'
-      - '*'
-  pull_request:
-    branches: 
-      - main
-    paths-ignore:
-      - '**/*.md'
-      - '**/*.env'
-      - '*'
+  workflow_dispatch:
+  # push:
+  #   branches: 
+  #     - main
+  #   paths-ignore:
+  #     - '**/*.md'
+  #     - '**/*.env'
+  # pull_request:
+  #   branches: 
+  #     - main
+  #   paths-ignore:
+  #     - '**/*.md'
+  #     - '**/*.env'
+     
       
 jobs:
   test:
