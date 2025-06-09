@@ -1,12 +1,20 @@
-name: CI pipeline
+name: Frontend CI pipeline
 
 on:
   push:
     branches: 
       - main
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.env'
+      - '*'
   pull_request:
     branches: 
       - main
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.env'
+      - '*'
 
 jobs:
   test:
@@ -50,6 +58,7 @@ jobs:
       #   run: npm run lint:fix
   
   build:
+    if: github.event_name == 'push'
     name: Build & Upload Artifact
     needs: [test, lint]
     runs-on: ubuntu-latest
@@ -150,6 +159,7 @@ jobs:
           vuln-type: 'os,library'
       
       - name: Push docker image
+        if: github.event_name == 'push'
         uses: docker/build-push-action@v4
         with:
           context: ./react-frontend
