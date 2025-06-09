@@ -34,7 +34,9 @@
     "start": "PORT=4200 react-scripts start",
     "build": "cross-env webpack --config ./webpack.config.js",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(jest-)?(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons|react-confirm-alert)/)'",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -57,12 +59,15 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.24.1",
     "@babel/preset-react": "^7.24.0",
-     "@babel/core": "^7.24.0",
+    "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.1",
     "@babel/runtime": "^7.24.1",
     "@types/jsdom": "^11.12.0",
     "axios-mock-adapter": "^1.20.0",
     "cross-env": "^7.0.3",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
