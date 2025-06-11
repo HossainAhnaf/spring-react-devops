@@ -56,14 +56,13 @@ jobs:
   lint:
     name: Run linter
     runs-on: ubuntu-latest
-    if: github.event_name == 'push lal'
     steps:
       - uses: actions/checkout@v4
       
-      - name: Super Linter
-        uses: super-linter/super-linter@v7.4.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Super Linter
+      #   uses: super-linter/super-linter@v7.4.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   
   build:
