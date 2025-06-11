@@ -79,17 +79,6 @@ jobs:
           distribution: liberica
           java-version: 11
 
-      - name: Wait for MySQL to be ready
-        run: |
-          for i in {1..30}; do
-            if mysqladmin ping -h127.0.0.1 -uroot -p1 --silent; then
-              echo "MySQL is ready!"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 2
-          done  
-
       - name: Build with maven
         working-directory: ./spring-backend
         run: ./mvnw package -Dspring.datasource.url=jdbc:mysql://127.0.0.1:3306/hobbie_backend_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=Europe/Paris
@@ -143,6 +132,8 @@ jobs:
           push: false
           load: true
           tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/hobbie_backend_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=Europe/Paris
 
       - name: Set Image tag outputs
         id: set-output

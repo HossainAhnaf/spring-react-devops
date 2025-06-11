@@ -14,6 +14,8 @@ services:
     build: 
       context: ./spring-backend
       target: prod
+      args:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/hobbie_backend_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=Europe/Paris
     ports:
       - "8080:8080"
     env_file: ./spring-backend/.env.prod

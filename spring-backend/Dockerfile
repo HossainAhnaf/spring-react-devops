@@ -13,10 +13,15 @@ CMD ["./mvnw", "spring-boot:run"]
 
 FROM base AS build
 
-RUN ./mvnw package
+ARG SPRING_DATASOURCE_URL
+
+ENV SPRING_DATASOURCE_URL=$SPRING_DATASOURCE_URL
+
+RUN ./mvnw package 
 
 
 FROM bellsoft/liberica-runtime-container:jdk-11-musl AS prod
+
 
 WORKDIR /app
 
