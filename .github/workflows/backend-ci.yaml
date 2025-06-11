@@ -132,8 +132,6 @@ jobs:
           push: false
           load: true
           tags: ${{ steps.meta.outputs.tags }}
-          build-args: |
-            SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/hobbie_backend_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=Europe/Paris
 
       - name: Set Image tag outputs
         id: set-output
@@ -169,6 +167,4 @@ jobs:
           context: ./spring-backend
           push: true
           tags: ${{ steps.meta.outputs.tags }}    
-          build-args: |
-            SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/hobbie_backend_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=Europe/Paris
             
