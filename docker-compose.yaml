@@ -1,13 +1,13 @@
 services:
   frontend:
     build:
-      context: ./react-frontend
+      context: ./frontend
       target: dev
     ports:
       - "4200:4200"
-    env_file: ./react-frontend/.env.dev
+    env_file: ./frontend/.env.dev
     volumes:
-      - ./react-frontend:/app
+      - ./frontend:/app
       - /app/node_modules
     depends_on:
       - backend
@@ -15,11 +15,11 @@ services:
       - frontend-backend
   backend:
     build: 
-      context: ./spring-backend
+      context: ./backendntend
       target: dev
     ports:
       - "8080:8080"
-    env_file: ./spring-backend/.env.dev
+    env_file: ./backendntend/.env.dev
     depends_on:
       - db
     networks:

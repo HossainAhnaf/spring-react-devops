@@ -50,7 +50,7 @@ jobs:
           done
 
       - name: Run tests with Maven
-        working-directory: ./spring-backend
+        working-directory: ./backendntend
         run: mvn test -Dspring.datasource.url=jdbc:mysql://127.0.0.1:3306/hobbie_backend_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=Europe/Paris
 
   lint:
@@ -80,14 +80,14 @@ jobs:
           java-version: 11
 
       - name: Build with maven
-        working-directory: ./spring-backend
+        working-directory: ./backendntend
         run: ./mvnw clean package -DskipTests
         
       - name: Upload artifact
         uses: actions/upload-artifact@v4.6.2
         with:
           name: Build Artifact
-          path: ./spring-backend/target
+          path: ./backendntend/target
   
   docker:
     name: Build , Security Scan & push Docker image
@@ -128,7 +128,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           target: prod
-          context: ./spring-backend
+          context: ./backendntend
           push: false
           load: true
           tags: ${{ steps.meta.outputs.tags }}
@@ -164,7 +164,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           target: prod
-          context: ./spring-backend
+          context: ./backendntend
           push: true
           tags: ${{ steps.meta.outputs.tags }}    
             

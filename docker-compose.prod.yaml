@@ -1,22 +1,22 @@
 services:
   frontend:
     build:
-      context: ./react-frontend
+      context: ./frontend
       target: prod
     ports:
       - "4200:4200"
-    env_file: ./react-frontend/.env.prod
+    env_file: ./frontend/.env.prod
     depends_on:
       - backend
     networks:
       - frontend-backend
   backend:
     build: 
-      context: ./spring-backend
+      context: ./backendntend
       target: prod
     ports:
       - "8080:8080"
-    env_file: ./spring-backend/.env.prod
+    env_file: ./backendntend/.env.prod
     depends_on:
       - db
     networks:
