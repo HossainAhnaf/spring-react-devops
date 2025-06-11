@@ -14,10 +14,21 @@ on:
       - '**/*.md'
       - '**/*.env'
 
+
+
 jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
+    services:
+      db: 
+       image: mysql:8
+       env:
+         MYSQL_ROOT_PASSWORD: root
+         MYSQL_DATABASE: hobbie_backend_db
+       ports:
+         - 3306:3306
+       
     steps:
       - uses: actions/checkout@v4
 
@@ -27,6 +38,17 @@ jobs:
           java-version: 11
           distribution: liberica
       
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h127.0.0.1 -uroot -proot --silent; then
+              echo "MySQL is ready!"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
+           
       - name: Run tests with Maven
         working-directory: ./spring-backend
         run: ./mvnw test
