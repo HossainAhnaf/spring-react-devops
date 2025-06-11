@@ -13,7 +13,7 @@ CMD ["./mvnw", "spring-boot:run"]
 
 FROM base AS build
 
-RUN ./mvnw package -DskipTests 
+RUN ./mvnw clean package -DskipTests 
 
 
 FROM bellsoft/liberica-runtime-container:jdk-11-musl AS prod

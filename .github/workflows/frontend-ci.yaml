@@ -24,18 +24,19 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
       
-      # - name: Set up node
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '16.13.1'
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.13.1'
+          cache: 'npm'
       
-      # - name: Install dependencies
-      #   working-directory: ./react-frontend
-      #   run: npm install
+      - name: Install dependencies
+        working-directory: ./react-frontend
+        run: npm install
       
-      # - name: Run tests
-      #   working-directory: ./react-frontend
-      #   run: npm run test
+      - name: Run tests
+        working-directory: ./react-frontend
+        run: npm run test
   
   lint:
     name: Run linter
@@ -44,18 +45,19 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
       
-      # - name: Set up node
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '16.13.1'
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.13.1'
+          cache: 'npm'
       
-      # - name: Install dependencies
-      #   working-directory: ./react-frontend
-      #   run: npm install
+      - name: Install dependencies
+        working-directory: ./react-frontend
+        run: npm install
       
-      # - name: Run linter
-      #   working-directory: ./react-frontend
-      #   run: npm run lint:fix
+      - name: Run linter
+        working-directory: ./react-frontend
+        run: npm run lint:fix
   
   build:
     if: github.event_name == 'push'
