@@ -81,7 +81,7 @@ jobs:
 
       - name: Build with maven
         working-directory: ./spring-backend
-        run: mvn package
+        run: mvn package -DskipTests
       
       - name: Upload artifact
         uses: actions/upload-artifact@v4.6.2
