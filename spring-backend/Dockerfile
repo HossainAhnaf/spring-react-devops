@@ -22,6 +22,9 @@ RUN ./mvnw package
 
 FROM bellsoft/liberica-runtime-container:jdk-11-musl AS prod
 
+ARG SPRING_DATASOURCE_URL
+
+ENV SPRING_DATASOURCE_URL=$SPRING_DATASOURCE_URL
 
 WORKDIR /app
 
