@@ -80,6 +80,7 @@ jobs:
           java-version: 11
 
       - name: Build with maven
+        working-directory: ./spring-backend
         run: mvn package
       
       - name: Upload artifact

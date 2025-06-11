@@ -13,7 +13,7 @@ CMD ["./mvnw", "spring-boot:run"]
 
 FROM base AS build
 
-RUN mvn package
+RUN .mvn package
 
 
 FROM bellsoft/liberica-runtime-container:jdk-11-musl AS prod
