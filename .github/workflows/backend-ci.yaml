@@ -51,7 +51,11 @@ jobs:
 
       - name: Run tests with Maven
         working-directory: ./spring-backend
-        run: ./mvnw test -Dspring.profiles.active=test
+        run: |
+          ./mvnw test -Dspring.datasource.url=jdbc:mysql://127.0.0.1:3306/hobbie_backend_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=Europe/Paris \
+                      -Dspring.datasource.username=root \
+                      -Dspring.datasource.password=1
+
 
       
   # build:
